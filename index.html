@@ -162,7 +162,7 @@ margin-bottom:25px;
     <select id="localidad" disabled>
       <option value="" selected disabled>Seleccione una tribuna</option>
       <option value="Norte Alta">Norte Alta</option>
-      <option value="Oriental Alta Familiar">OOriental Alta Familiar</option>
+      <option value="Oriental Alta Familiar">Oriental Alta Familiar</option>
       <option value="Oriental Baja">Oriental Baja</option>
       <option value="Occidental Alta Vip">Occidental Alta Vip</option>
       <option value="Occidental Baja">Occidental Baja</option>
@@ -181,7 +181,7 @@ margin-bottom:25px;
     <svg id="mapaNorte Alta" viewBox="0 0 1000 700" style="display:none"><g id="asientosNorte Alta"></g></svg>
     <svg id="mapaOriental Alta Familiar" viewBox="0 0 1000 600" style="display:none"><g id="asientosOriental Alta Familiar"></g></svg>
     <svg id="mapaOriental Baja" viewBox="0 0 1000 700" style="display:none"><g id="asientosOriental Baja"></g></svg>
-    <svg id="mapaOccidental Alta Vip" viewBox="0 0 1000 600" style="display:none"><g id="asientosOccidental Alta Vipa"></g></svg>
+    <svg id="mapaOccidental Alta Vip" viewBox="0 0 1000 600" style="display:none"><g id="asientosOccidental Alta Vip"></g></svg>
     <svg id="mapaOccidental Baja" viewBox="0 0 1000 650" style="display:none"><g id="asientosOccidental Baja"></g></svg>
     <svg id="mapaVip Oriental" viewBox="0 0 1000 750" style="display:none"><g id="asientosVip Oriental"></g></svg>
   </div>
@@ -318,12 +318,12 @@ const radio = 8;
 let seleccionados = [];
 
 const mapas = {
-  'Norte Alta': { svg: document.getElementById('mapaNorte Alta'), grupo: document.getElementById('asientosNorte Alta'), filas: 26, y: 40 },
-  'Oriental Alta Familiar': { svg: document.getElementById('mapaOriental Alta Familiar'), grupo: document.getElementById('asientosOriental Alta Familiar'), filas: 8, y: 90 },
+  'Norte Alta': { svg: document.getElementById('mapaNorte Alta'), grupo: document.getElementById('asientosNorte Alta'), filas: 20, y: 40 },
+  'Oriental Alta Familiar': { svg: document.getElementById('mapaOriental Alta Familiar'), grupo: document.getElementById('asientosOriental Alta Familiar'), filas: 10, y: 90 },
   'Oriental Baja': { svg: document.getElementById('mapaOriental Baja'), grupo: document.getElementById('asientosOriental Baja'), filas: 26, y: 40 },
   'Occidental Alta Vip': { svg: document.getElementById('mapaOccidental Alta Vip'), grupo: document.getElementById('asientosOccidental Alta Vip'), filas: 8, y: 90 },
-  'Occidental Baja': { svg: document.getElementById('mapaOccidental Baja'), grupo: document.getElementById('asientosOccidental Baja'), filas: 11, y: 60 },
-  'Vip Oriental': { svg: document.getElementById('mapaVip Oriental'), grupo: document.getElementById('asientosVip Oriental'), filas: 26, y: 40 }
+  'Occidental Baja': { svg: document.getElementById('mapaOccidental Baja'), grupo: document.getElementById('asientosOccidental Baja'), filas: 26, y: 50 },
+  'Vip Oriental': { svg: document.getElementById('mapaVip Oriental'), grupo: document.getElementById('asientosVip Oriental'), filas: 10, y: 30 }
 };
 const ocupacionLocalidad = {
 
