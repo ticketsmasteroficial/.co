@@ -4,8 +4,29 @@
   <meta charset="UTF-8" />
   <title>ticketmaster</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    body { font-family: Arial, sans-serif; background:linear-gradient(135deg,#f3f7fb,#dde8f7); margin:0; padding:20px; }
+   <style>
+    
+body {
+  font-family: Arial, sans-serif;
+
+  /* Cambia el nombre por el de tu imagen */
+  background-image:
+    linear-gradient(
+      rgba(243,247,251,0.62),
+      rgba(221,232,247,0.62)
+    ),
+    url("FINAL.jpeg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #dde8f7;
+
+  margin: 0;
+  padding: 20px;
+}
+
     h1, h2 { text-align:center; }
     .container { max-width:1200px; margin:0 auto; }
     .card { background:white; padding:20px; border-radius:14px; margin-top:20px; }
@@ -96,8 +117,8 @@ margin-bottom:25px;
 </head>
 <body>
 
-<h1> BTS WORLD TOUR | ARIRANG </h1>
-<p style="text-align:center">ESTADIO EL CAMPÍN BOGOTÁ - SÁBADO 3 DE OCTUBRE 2026 16:00</p>
+<h1> VIAJANDO POR EL MUNDO KAROL G</h1>
+<p style="text-align:center">ESTADIO EL CAMPÍN BOGOTÁ - DOMINGO 6 DE DICIEMBRE 2026 15:00</p>
 
 <div class="container">
 
@@ -140,12 +161,12 @@ margin-bottom:25px;
     <h2>Localidad</h2>
     <select id="localidad" disabled>
       <option value="" selected disabled>Seleccione una tribuna</option>
-      <option value="Sur Alta">Sur Alta</option>
-      <option value="Oriental Sur Alta">Oriental Sur Alta</option>
-      <option value="Oriental Norte Baja">Oriental Norte Baja</option>
-      <option value="Occidental Alta">Occidental Alta</option>
-      <option value="Occidental Baja">Occidental Baja</option>
+      <option value="Norte Alta">Norte Alta</option>
+      <option value="Oriental Alta Familiar">OOriental Alta Familiar</option>
       <option value="Oriental Baja">Oriental Baja</option>
+      <option value="Occidental Alta Vip">Occidental Alta Vip</option>
+      <option value="Occidental Baja">Occidental Baja</option>
+      <option value="Vip Oriental">Vip Oriental</option>
     </select>
   </div>
 
@@ -157,12 +178,12 @@ margin-bottom:25px;
     </div>
     <h2 id="tituloLocalidad"></h2>
 
-    <svg id="mapaSur Alta" viewBox="0 0 1000 700" style="display:none"><g id="asientosSur Alta"></g></svg>
-    <svg id="mapaOriental Sur Alta" viewBox="0 0 1000 600" style="display:none"><g id="asientosOriental Sur Alta"></g></svg>
-    <svg id="mapaOriental Norte Baja" viewBox="0 0 1000 700" style="display:none"><g id="asientosOriental Norte Baja"></g></svg>
-    <svg id="mapaOccidental Alta" viewBox="0 0 1000 600" style="display:none"><g id="asientosOccidental Alta"></g></svg>
+    <svg id="mapaNorte Alta" viewBox="0 0 1000 700" style="display:none"><g id="asientosNorte Alta"></g></svg>
+    <svg id="mapaOriental Alta Familiar" viewBox="0 0 1000 600" style="display:none"><g id="asientosOriental Alta Familiar"></g></svg>
+    <svg id="mapaOriental Baja" viewBox="0 0 1000 700" style="display:none"><g id="asientosOriental Baja"></g></svg>
+    <svg id="mapaOccidental Alta Vip" viewBox="0 0 1000 600" style="display:none"><g id="asientosOccidental Alta Vipa"></g></svg>
     <svg id="mapaOccidental Baja" viewBox="0 0 1000 650" style="display:none"><g id="asientosOccidental Baja"></g></svg>
-    <svg id="mapaOriental Baja" viewBox="0 0 1000 750" style="display:none"><g id="asientosOriental Baja"></g></svg>
+    <svg id="mapaVip Oriental" viewBox="0 0 1000 750" style="display:none"><g id="asientosVip Oriental"></g></svg>
   </div>
 
   <div class="card" id="confirm" style="display:none">
@@ -186,7 +207,7 @@ margin-bottom:25px;
 
     <div style="margin-top:15px">
       <p>Precio por boleta: <strong>$<span id="precioBoleta"></span></strong></p>
-      <p>Servicio: <strong>$60.000</strong></p>
+      <p>Servicio: <strong>$102.000</strong></p>
       <h3>TOTAL: $<span id="totalCompra"></span> COP</h3>
     </div>
 
@@ -297,26 +318,26 @@ const radio = 8;
 let seleccionados = [];
 
 const mapas = {
-  'Sur Alta': { svg: document.getElementById('mapaSur Alta'), grupo: document.getElementById('asientosSur Alta'), filas: 26, y: 40 },
-  'Oriental Sur Alta': { svg: document.getElementById('mapaOriental Sur Alta'), grupo: document.getElementById('asientosOriental Sur Alta'), filas: 8, y: 90 },
-  'Oriental Norte Baja': { svg: document.getElementById('mapaOriental Norte Baja'), grupo: document.getElementById('asientosOriental Norte Baja'), filas: 26, y: 40 },
-  'Occidental Alta': { svg: document.getElementById('mapaOccidental Alta'), grupo: document.getElementById('asientosOccidental Alta'), filas: 8, y: 90 },
+  'Norte Alta': { svg: document.getElementById('mapaNorte Alta'), grupo: document.getElementById('asientosNorte Alta'), filas: 26, y: 40 },
+  'Oriental Alta Familiar': { svg: document.getElementById('mapaOriental Alta Familiar'), grupo: document.getElementById('asientosOriental Alta Familiar'), filas: 8, y: 90 },
+  'Oriental Baja': { svg: document.getElementById('mapaOriental Baja'), grupo: document.getElementById('asientosOriental Baja'), filas: 26, y: 40 },
+  'Occidental Alta Vip': { svg: document.getElementById('mapaOccidental Alta Vip'), grupo: document.getElementById('asientosOccidental Alta Vip'), filas: 8, y: 90 },
   'Occidental Baja': { svg: document.getElementById('mapaOccidental Baja'), grupo: document.getElementById('asientosOccidental Baja'), filas: 11, y: 60 },
-  'Oriental Baja': { svg: document.getElementById('mapaOriental Baja'), grupo: document.getElementById('asientosOriental Baja'), filas: 26, y: 40 }
+  'Vip Oriental': { svg: document.getElementById('mapaVip Oriental'), grupo: document.getElementById('asientosVip Oriental'), filas: 26, y: 40 }
 };
 const ocupacionLocalidad = {
 
-    "Sur Alta": 0.90,
+    "Norte Alta": 0.85,
 
-    "Oriental Sur Alta": 0.90,
+    "Oriental Alta Familiar": 0.83,
 
-    "Oriental Norte Baja": 0.88,
+    "Oriental Baja": 0.81,
 
-    "Occidental Alta": 0.91,
+    "Occidental Alta Vip": 0.81,
 
-    "Occidental Baja": 0.90,
+    "Occidental Baja": 0.83,
 
-    "Oriental Baja": 0.94
+    "Vip Oriental": 0.88
 
 };
 function habilitarLocalidad() {
@@ -471,15 +492,15 @@ function iniciarCarrito() {
 
   // PRECIOS POR TRIBUNA
 const precios = {
-  'Sur Alta': 336000,
-  'Oriental Sur Alta': 336000,
-  'Oriental Norte Baja': 240000,
-  'Occidental Alta': 549000,
-  'Occidental Baja': 839000,
-  'Oriental Baja': 799000
+  'Norte Alta': 262000,
+  'Oriental Alta Familiar': 497000,
+  'Oriental Baja': 600000,
+  'Occidental Alta Vip': 700000,
+  'Occidental Baja': 600000,
+  'Vip Oriental': 900000
 };
 
-const servicio = 60000;
+const servicio = 102000;
 
 // Obtener localidad seleccionada
 const localidadActual = tituloLocalidad.innerText;
